@@ -1,0 +1,398 @@
+[
+  {
+    "lat": 63.36,
+    "lon": 23.36,
+    "stationName": "aamakinen",
+    "municipality": "Evijarvi"
+  },
+  {
+    "lat": 61.85,
+    "lon": 22.41,
+    "stationName": "backbog",
+    "municipality": "Kankaanpaa"
+  },
+  {
+    "lat": 63.0,
+    "lon": 22.05,
+    "stationName": "chcnavfin",
+    "municipality": "Vedenoja"
+  },
+  {
+    "lat": 62.73,
+    "lon": 22.41,
+    "stationName": "fi_agronav",
+    "municipality": "Ilmajoki"
+  },
+  {
+    "lat": 61.5,
+    "lon": 21.8,
+    "stationName": "FIN_PORI_LINNA",
+    "municipality": "Ulvila"
+  },
+  {
+    "lat": 61.02,
+    "lon": 28.64,
+    "stationName": "Harjula",
+    "municipality": "Lappeenranta"
+  },
+  {
+    "lat": 60.78,
+    "lon": 26.1,
+    "stationName": "hietalantila",
+    "municipality": ""
+  },
+  {
+    "lat": 60.79,
+    "lon": 26.2,
+    "stationName": "Hietana",
+    "municipality": "Kankonen"
+  },
+  {
+    "lat": 63.24,
+    "lon": 22.61,
+    "stationName": "Hoolanti",
+    "municipality": ""
+  },
+  {
+    "lat": 60.85,
+    "lon": 22.8,
+    "stationName": "huovila",
+    "municipality": "Loimaa"
+  },
+  {
+    "lat": 60.8,
+    "lon": 22.93,
+    "stationName": "jmtbase",
+    "municipality": "Metsajoki"
+  },
+  {
+    "lat": 62.15,
+    "lon": 23.65,
+    "stationName": "JokelanTila",
+    "municipality": "Virrat"
+  },
+  {
+    "lat": 62.0,
+    "lon": 27.62,
+    "stationName": "kansala_ntrip",
+    "municipality": "Juva"
+  },
+  {
+    "lat": 60.09,
+    "lon": 24.36,
+    "stationName": "knummi_kha",
+    "municipality": "Kirkkonummi"
+  },
+  {
+    "lat": 62.27,
+    "lon": 21.74,
+    "stationName": "Koivuluoma",
+    "municipality": "Karijoki"
+  },
+  {
+    "lat": 62.38,
+    "lon": 22.93,
+    "stationName": "kollinmaki",
+    "municipality": "Kollinmaki"
+  },
+  {
+    "lat": 60.84,
+    "lon": 23.44,
+    "stationName": "Konehalli",
+    "municipality": "Klemela"
+  },
+  {
+    "lat": 63.97,
+    "lon": 25.03,
+    "stationName": "KORPELA2",
+    "municipality": "Nivala"
+  },
+  {
+    "lat": 64.13,
+    "lon": 24.43,
+    "stationName": "Kortepera",
+    "municipality": "Ylivieska"
+  },
+  {
+    "lat": 63.12,
+    "lon": 23.24,
+    "stationName": "Koskelankartano",
+    "municipality": "Kauhava"
+  },
+  {
+    "lat": 61.4,
+    "lon": 22.08,
+    "stationName": "koso",
+    "municipality": "Oso"
+  },
+  {
+    "lat": 63.19,
+    "lon": 30.01,
+    "stationName": "Kotalahti",
+    "municipality": "Lieksa"
+  },
+  {
+    "lat": 61.3,
+    "lon": 23.8,
+    "stationName": "Laasonportti",
+    "municipality": "Lempaala"
+  },
+  {
+    "lat": 62.12,
+    "lon": 22.75,
+    "stationName": "Lammintausta",
+    "municipality": "Karvia"
+  },
+  {
+    "lat": 62.93,
+    "lon": 22.82,
+    "stationName": "Leminen",
+    "municipality": "Kitinoja"
+  },
+  {
+    "lat": 60.32,
+    "lon": 22.88,
+    "stationName": "Litorinanranta2",
+    "municipality": "Salo"
+  },
+  {
+    "lat": 62.92,
+    "lon": 23.19,
+    "stationName": "Lonki",
+    "municipality": "Lapua"
+  },
+  {
+    "lat": 60.69,
+    "lon": 24.49,
+    "stationName": "loppi",
+    "municipality": "Loppi"
+  },
+  {
+    "lat": 62.46,
+    "lon": 22.13,
+    "stationName": "LuomankylaRTK",
+    "municipality": ""
+  },
+  {
+    "lat": 61.19,
+    "lon": 23.04,
+    "stationName": "Maatila_1017",
+    "municipality": "Punkalaidun"
+  },
+  {
+    "lat": 62.74,
+    "lon": 27.69,
+    "stationName": "Mantyniemi",
+    "municipality": "Kuopio"
+  },
+  {
+    "lat": 64.61,
+    "lon": 25.52,
+    "stationName": "MikaFarms",
+    "municipality": "Mankila"
+  },
+  {
+    "lat": 62.2,
+    "lon": 27.83,
+    "stationName": "MPTorst",
+    "municipality": "Joroinen"
+  },
+  {
+    "lat": 63.0,
+    "lon": 22.86,
+    "stationName": "nevala",
+    "municipality": "lapua"
+  },
+  {
+    "lat": 61.12,
+    "lon": 22.37,
+    "stationName": "Ojaranta",
+    "municipality": "Koylio"
+  },
+  {
+    "lat": 62.82,
+    "lon": 23.77,
+    "stationName": "OrganicDairyFarmKari",
+    "municipality": "Alajarvi"
+  },
+  {
+    "lat": 62.76,
+    "lon": 27.7,
+    "stationName": "Pajukaarre",
+    "municipality": "Kuopio"
+  },
+  {
+    "lat": 64.44,
+    "lon": 29.0,
+    "stationName": "perukka",
+    "municipality": "Kuhmo"
+  },
+  {
+    "lat": 61.12,
+    "lon": 23.03,
+    "stationName": "PRK_BASE1",
+    "municipality": "Pirkanmaa"
+  },
+  {
+    "lat": 60.45,
+    "lon": 25.35,
+    "stationName": "rantala",
+    "municipality": ""
+  },
+  {
+    "lat": 63.82,
+    "lon": 26.42,
+    "stationName": "Remeskyla",
+    "municipality": "Kiuruvesi"
+  },
+  {
+    "lat": 60.72,
+    "lon": 21.9,
+    "stationName": "Ristimaki",
+    "municipality": "Mynamaki"
+  },
+  {
+    "lat": 62.82,
+    "lon": 22.64,
+    "stationName": "salmiac",
+    "municipality": "Ilmajoki"
+  },
+  {
+    "lat": 60.45,
+    "lon": 24.88,
+    "stationName": "salomaki",
+    "municipality": "Nurmijarvi"
+  },
+  {
+    "lat": 62.83,
+    "lon": 21.8,
+    "stationName": "Sarvijoki",
+    "municipality": "Sarvijoki"
+  },
+  {
+    "lat": 60.84,
+    "lon": 24.76,
+    "stationName": "savilampi",
+    "municipality": "Janakkala"
+  },
+  {
+    "lat": 62.55,
+    "lon": 22.66,
+    "stationName": "SeAMK-agrop",
+    "municipality": "Seinajoki"
+  },
+  {
+    "lat": 61.65,
+    "lon": 22.76,
+    "stationName": "SeppaAgro",
+    "municipality": "Sastamala"
+  },
+  {
+    "lat": 62.55,
+    "lon": 22.79,
+    "stationName": "SikakylaRtk",
+    "municipality": ""
+  },
+  {
+    "lat": 62.96,
+    "lon": 23.73,
+    "stationName": "Talvitie",
+    "municipality": "Alajarvi"
+  },
+  {
+    "lat": 66.35,
+    "lon": 23.68,
+    "stationName": "Taroniemi",
+    "municipality": "Ylitornio"
+  },
+  {
+    "lat": 62.36,
+    "lon": 27.56,
+    "stationName": "Tihuspohja",
+    "municipality": "Tihusniemi"
+  },
+  {
+    "lat": 63.3,
+    "lon": 23.0,
+    "stationName": "Tuhka",
+    "municipality": "Kauhava"
+  },
+  {
+    "lat": 63.23,
+    "lon": 23.74,
+    "stationName": "tukiasemaTuomela",
+    "municipality": "Lappajarvi"
+  },
+  {
+    "lat": 61.23,
+    "lon": 25.37,
+    "stationName": "Tuukkala",
+    "municipality": "Iso-Ainio"
+  },
+  {
+    "lat": 61.45,
+    "lon": 21.72,
+    "stationName": "Tuulenkuja",
+    "municipality": "Pori"
+  },
+  {
+    "lat": 63.1,
+    "lon": 21.59,
+    "stationName": "UnivaasaNovAtelBST",
+    "municipality": "Vaasa"
+  },
+  {
+    "lat": 60.66,
+    "lon": 21.77,
+    "stationName": "Uusikartano",
+    "municipality": "Vehmaa"
+  },
+  {
+    "lat": 63.07,
+    "lon": 22.03,
+    "stationName": "vanhala",
+    "municipality": "Vahakyro"
+  },
+  {
+    "lat": 62.97,
+    "lon": 22.3,
+    "stationName": "Ventala",
+    "municipality": "Isokyro"
+  },
+  {
+    "lat": 61.06,
+    "lon": 22.52,
+    "stationName": "viljala",
+    "municipality": "Koylio, Sakyas"
+  },
+  {
+    "lat": 63.19,
+    "lon": 22.87,
+    "stationName": "Vuosnevantie",
+    "municipality": "Kauhava"
+  },
+  {
+    "lat": 62.96,
+    "lon": 23.12,
+    "stationName": "YliKarhu",
+    "municipality": "Lapua"
+  },
+  {
+    "lat": 63.07,
+    "lon": 22.65,
+    "stationName": "Yliluoma",
+    "municipality": "Untamala"
+  },
+  {
+    "lat": 63.17,
+    "lon": 23.83,
+    "stationName": "Ylinen",
+    "municipality": "Vimpeli"
+  },
+  {
+    "lat": 63.32,
+    "lon": 22.78,
+    "stationName": "Ylisenmaki",
+    "municipality": "Kauhava"
+  }
+]

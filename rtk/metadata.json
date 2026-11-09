@@ -1,0 +1,13 @@
+{
+  "source": "tuni-agri/RTKmap points.json",
+  "source_url": "https://github.com/tuni-agri/RTKmap/blob/main/points.json",
+  "snapshot_date": "Tuntematon – alkuperäisen JSON-tiedoston päivitysaikaa ei vahvistettu",
+  "live": false,
+  "excluded_invalid_locations": [
+    "Matvjychuk",
+    "MTYSippola",
+    "Pelto-Pusula",
+    "silok",
+    "Yliopistonrinne_Here"
+  ]
+}
