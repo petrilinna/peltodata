@@ -1,19 +1,26 @@
-# Peltodata RTK-kartta – vaihe 2
+# Peltodata RTK-kartta – vaihe 3
 
-Staattinen kartta osoitteeseen `/rtk/`, ilman Flaskia tai RTK2go-verkkokyselyitä.
+Staattinen kartta käyttää `rtk/points.json`-tiedostoa. Sivun avaaminen **ei koskaan** kysy RTK2go-palvelua. `rtk/metadata.json` sisältää viimeisimmän onnistuneen aineistohaun UTC-aikaleiman, joka näytetään Suomen ajassa kartalla.
 
-## Julkaisu
+## Automaattinen päivitys
 
-Kopioi ZIP-paketin sisältö Peltodatan julkisen GitHub Pages -repositorion juureen. Säilytä `rtk/`-hakemisto. Nykyinen etusivu on mukana ja sen navigaatio on päivitetty. GitHub Pagesissa avaa `/rtk/`.
+GitHub Actions: `.github/workflows/update-rtk.yml`, maanantaisin klo 04.17 UTC. Työnkulku voidaan käynnistää käsin, mutta seitsemän vuorokauden lukitus estää ennenaikaisen kyselyn.
 
-## Testaus paikallisesti
+1. `reserve` tarkistaa edellisen **hakuyrityksen** aikaleiman.
+2. Työnkulku **committaa ja pushaa** uuden yritysaikaleiman `main`-haaraan **ennen verkkoyhteyttä**.
+3. Vasta onnistuneen pushin jälkeen `fetch` tekee yhden NTRIP-asemaluettelopyynnön, ilman uudelleenyrityksiä tai HTTP-uudelleenohjauksia.
+4. Kelvollinen uusi JSON ja päivityspäiväys pusketaan `main`-haaraan. Virhetilanteessa edellinen asemaluettelo ja sen päivämäärä säilyvät.
 
-Suorita paketin juuressa `python -m http.server 8000` ja avaa `http://localhost:8000/rtk/`. Pelkkä file://-avaus ei välttämättä salli JSON-tiedoston lataamista.
+**Tärkeää:** Älä käynnistä `python3 scripts/update_rtk.py fetch` suoraan, ellei varauksen tallennusta GitHubiin ole varmistettu. Älä käytä muita RTK2go-hakijoita samanaikaisesti. GitHubin haarasuojaukset tai puuttuva Actions-kirjoitusoikeus voivat estää pushaamisen; silloin haku ei käynnisty. Aseta repositoryn Actions-permissions -> Workflow permissions -> Read and write permissions tarvittaessa.
 
-## Tietolähde ja rajoitukset
+GitHub Actionsin samanaikaisuusrajoitus toimii saman repositorion sisällä. Jos useita riippumattomia repositorioita hakee samaa tietoa, niiden aikarajoitukset eivät ole yhteisiä.
 
-`rtk/points.json` on kopioitu käsin julkisen tuni-agri/RTKmap-repositorion points.json-sisällöstä 9.11.2026. Alkuperäisen JSON-aineiston viimeistä todellista päivitysaikaa ei tunneta. Virheelliset sijainnit (0,0 tai Suomen ulkopuolella) jätettiin kartalta pois. Asemien tilaa tai ajantasaisuutta ei ole tarkistettu. RTK2go-palveluun ei tehdä kyselyitä. Leaflet ja OSM-karttatiilet ladataan julkisista palveluista käyttäjän selaimessa.
+## Ensimmäinen päivitys
 
-Lähdekoodi: https://github.com/tuni-agri/RTKmap (GPL-3.0). Säilytä alkuperäisen tekijän maininta ja noudata GPL-3.0-lisenssin ehtoja myös jatkokehityksessä.
+Julkaisun jälkeen ajastettu ajo tai käsin käynnistetty workflow hakee uuden aineiston. **Tässä toimitetussa ZIP-paketissa on edelleen vanha asemaluettelo ja sen päivitysaika tuntematon.** Paketin valmistelussa ei otettu yhteyttä RTK2go-palveluun.
 
-Automaattinen viikkopäivitys ei sisälly tähän vaiheeseen.
+## Testaus
+
+`python3 -m http.server 8000`, avaa `http://localhost:8000/rtk/`. Tarkista GitHub Actions -ajon lokista varaus- ja päivityscommitit.
+
+Lähdekoodi perustuu projektiin https://github.com/tuni-agri/RTKmap (GPL-3.0). Säilytä tekijä- ja lisenssitiedot.
