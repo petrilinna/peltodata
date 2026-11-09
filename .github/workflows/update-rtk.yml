@@ -1,4 +1,4 @@
-name: Update RTK2go station snapshot
+name: Update RTK2go station snapshot.
 on:
   schedule:
     - cron: '17 4 * * 1'
