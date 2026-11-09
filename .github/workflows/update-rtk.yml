@@ -1,0 +1,50 @@
+name: Update RTK2go station snapshot
+on:
+  schedule:
+    - cron: '17 4 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: rtk2go-weekly-fetch
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Reserve a fetch attempt (no network call)
+        id: reserve
+        shell: bash
+        run: |
+          set +e
+          python3 scripts/update_rtk.py reserve
+          code=$?
+          set -e
+          if [ "$code" -eq 10 ]; then
+            echo "allowed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [ "$code" -ne 0 ]; then exit "$code"; fi
+          echo "allowed=true" >> "$GITHUB_OUTPUT"
+      - name: Persist reservation BEFORE contacting RTK2go
+        if: steps.reserve.outputs.allowed == 'true'
+        run: |
+          git add rtk/fetch-state.json
+          git commit -m "Reserve weekly RTK2go fetch attempt"
+          git push origin HEAD:main
+      - name: Fetch stations once (no retries)
+        if: steps.reserve.outputs.allowed == 'true'
+        run: python3 scripts/update_rtk.py fetch
+      - name: Publish validated station snapshot
+        if: steps.reserve.outputs.allowed == 'true'
+        run: |
+          git add rtk/points.json rtk/metadata.json
+          git commit -m "Update weekly RTK2go station snapshot"
+          git push origin HEAD:main
