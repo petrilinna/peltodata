@@ -6,6 +6,8 @@ const selectedEl=document.getElementById('selected');
 const hintEl=document.getElementById('hint');
 const searchEl=document.getElementById('search');
 const sourceDateEl=document.getElementById('source-date');
+const noticeTitleEl=document.getElementById('data-notice-title');
+const noticeDetailsEl=document.getElementById('data-notice-details');
 const clearEl=document.getElementById('clear');
 if(typeof L==='undefined') { statusEl.textContent='Karttakirjaston lataus epäonnistui. Tarkista verkkoyhteys.'; }
 else init();
@@ -20,6 +22,27 @@ async function init(){
  function draw(){markers.clearLayers();const q=searchEl.value.trim().toLocaleLowerCase('fi');let shown=0;for(const s of stations){if(q&&!`${s.stationName} ${s.municipality}`.toLocaleLowerCase('fi').includes(q))continue;shown++;const m=L.circleMarker([s.lat,s.lon],{radius:6,color:'#fff',weight:1.5,fillColor:'#1b735a',fillOpacity:.95}).addTo(markers);const wrap=document.createElement('div');const strong=document.createElement('strong');strong.textContent=s.stationName;wrap.append(strong);if(s.municipality){const p=document.createElement('p');p.textContent=s.municipality;wrap.append(p);}const p=document.createElement('p');p.textContent=`${s.lat.toFixed(4)}, ${s.lon.toFixed(4)}`;wrap.append(p);const b=document.createElement('button');b.type='button';b.textContent='Valitse aseman sijainti';b.addEventListener('click',()=>choose(s.lat,s.lon,`Valittu asema: ${s.stationName}`));wrap.append(b);m.bindPopup(wrap);}
  countEl.textContent=`${shown} / ${stations.length} asemaa`;}
  map.on('click',e=>choose(e.latlng.lat,e.latlng.lng));searchEl.addEventListener('input',draw);clearEl.addEventListener('click',()=>{chosen=null;selectedEl.textContent='';nearestEl.replaceChildren();hintEl.textContent='Valitse sijainti klikkaamalla karttaa.';if(chosenMarker){map.removeLayer(chosenMarker);chosenMarker=null;}});
- try{const [response,metaResponse]=await Promise.all([fetch('./points.json'),fetch('./metadata.json')]);if(!response.ok)throw new Error('Asematiedostoa ei voitu ladata');const data=await response.json();if(!Array.isArray(data))throw new Error('Asematiedoston muoto on virheellinen');stations=data.map(s=>({...s,lat:Number(s.lat),lon:Number(s.lon)})).filter(s=>Number.isFinite(s.lat)&&Number.isFinite(s.lon)&&s.lat>=59&&s.lat<=71&&s.lon>=19&&s.lon<=32&&typeof s.stationName==='string'&&s.stationName.trim());draw();if(metaResponse.ok){const meta=await metaResponse.json();const updated=meta.last_success_utc||meta.snapshot_date;let formatted='tuntematon';if(updated&&/^\d{4}-\d{2}-\d{2}T/.test(updated)){const d=new Date(updated);if(!Number.isNaN(d.getTime()))formatted=new Intl.DateTimeFormat('fi-FI',{dateStyle:'long',timeStyle:'short',timeZone:'Europe/Helsinki'}).format(d)+' (Suomen aikaa)';}sourceDateEl.textContent='Asematiedot päivitetty: '+formatted+'. Tiedot eivät ole reaaliaikaisia.';}statusEl.textContent=stations.length?'':'Asemia ei löytynyt.';}
- catch(e){statusEl.textContent='Asematietojen lataus epäonnistui: '+e.message;countEl.textContent='Aineisto ei saatavilla';}
+ try{const [response,metaResponse]=await Promise.all([fetch('./points.json'),fetch('./metadata.json')]);if(!response.ok)throw new Error('Asematiedostoa ei voitu ladata');const data=await response.json();if(!Array.isArray(data))throw new Error('Asematiedoston muoto on virheellinen');stations=data.map(s=>({...s,lat:Number(s.lat),lon:Number(s.lon)})).filter(s=>Number.isFinite(s.lat)&&Number.isFinite(s.lon)&&s.lat>=59&&s.lat<=71&&s.lon>=19&&s.lon<=32&&typeof s.stationName==='string'&&s.stationName.trim());draw();if(metaResponse.ok){
+  const meta=await metaResponse.json();
+  const updated=meta.last_success_utc||meta.snapshot_date;
+  let formatted=null;
+  if(typeof updated==='string' && /^\d{4}-\d{2}-\d{2}T/.test(updated)){
+    const d=new Date(updated);
+    if(!Number.isNaN(d.getTime()))formatted=new Intl.DateTimeFormat('fi-FI',{dateStyle:'long',timeStyle:'short',timeZone:'Europe/Helsinki'}).format(d)+' (Suomen aikaa)';
+  }
+  if(formatted){
+    noticeTitleEl.textContent='RTK2go-tukiasemat – viikoittain päivittyvä aineisto';
+    noticeDetailsEl.textContent=` · Asematiedot päivitetty: ${formatted}. Kartalla ${stations.length} tukiasemaa.`;
+    sourceDateEl.textContent=`Asematiedot päivitetty: ${formatted}. Tiedot eivät ole reaaliaikaisia.`;
+  }else{
+    noticeTitleEl.textContent='RTK2go-tukiasemat – tallennettu aineisto';
+    noticeDetailsEl.textContent=` · Kartalla ${stations.length} tukiasemaa. Viimeisintä onnistunutta päivitystä ei ole vahvistettu.`;
+    sourceDateEl.textContent='Päivityspäivämäärä ei ole saatavilla. Tiedot eivät ole reaaliaikaisia.';
+  }
+ }else{
+   noticeDetailsEl.textContent=` · Kartalla ${stations.length} tukiasemaa. Päivitystietoja ei voitu ladata.`;
+   sourceDateEl.textContent='Päivitystietoja ei voitu ladata.';
+ }
+ statusEl.textContent=stations.length?'':'Asemia ei löytynyt.';}
+ catch(e){statusEl.textContent='Asematietojen lataus epäonnistui: '+e.message;countEl.textContent='Aineisto ei saatavilla';noticeDetailsEl.textContent=' · Asematietoja ei voitu ladata.';}
 }
