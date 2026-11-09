@@ -1,13 +1,8 @@
 {
-  "source": "tuni-agri/RTKmap points.json",
-  "source_url": "https://github.com/tuni-agri/RTKmap/blob/main/points.json",
-  "snapshot_date": "Tuntematon – alkuperäisen JSON-tiedoston päivitysaikaa ei vahvistettu",
+  "source": "RTK2go NTRIP sourcetable (FIN), weekly cached snapshot",
+  "source_url": "http://rtk2go.com:2101/",
+  "snapshot_date": "2026-11-09T20:14:11Z",
   "live": false,
-  "excluded_invalid_locations": [
-    "Matvjychuk",
-    "MTYSippola",
-    "Pelto-Pusula",
-    "silok",
-    "Yliopistonrinne_Here"
-  ]
+  "last_success_utc": "2026-11-09T20:14:11Z",
+  "station_count": 93
 }
